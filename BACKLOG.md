@@ -1,7 +1,7 @@
 # Backlog do MVP — PHYNIX
 > Este arquivo é o resumo fixo do projeto.
 > O backlog semanal vivo fica nas **Issues** do repositório.
-> Acesse: github.com/Adryan16isaque/phynix/issues
+> Acesse: https://github.com/informaticaseed/tcc-2026-3c-chat-bot-de-estudos
 
 ---
 
