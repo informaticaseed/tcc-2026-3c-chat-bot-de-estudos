@@ -39,7 +39,6 @@ O PHYNIX é uma plataforma web de estudos que centraliza, em um único ambiente,
 - Sincronização de dados entre dispositivos
 - Aplicativo mobile nativo (iOS / Android)
 - Notificações push ou lembretes por e-mail
-- IA própria treinada — usa API Groq externa (LLaMA 3.3)
 - Painel administrativo para professores
 - Integração com plataformas de questões externas
 
