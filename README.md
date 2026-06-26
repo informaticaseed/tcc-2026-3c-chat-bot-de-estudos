@@ -20,6 +20,43 @@
 
 ## 🎯 O que o sistema faz
 
+# PHYNIX
+
+O **PHYNIX** é uma plataforma web de estudos para quem está se preparando para o **ENEM** e **vestibulares**. Ele funciona diretamente no navegador, sem necessidade de instalação.
+
+## Funcionalidades
+
+### 💬 Assistente IA
+Converse com uma IA (**LLaMA 3.3 via Groq**) para:
+- Tirar dúvidas;
+- Explicar conteúdos;
+- Gerar resumos;
+- Criar exercícios sobre qualquer matéria do vestibular.
+
+### 📋 Planner
+Organize seus estudos de forma simples:
+- Cadastre suas matérias (ex.: Matemática, Física e Redação);
+- Defina uma meta de horas para cada disciplina;
+- Registre as horas estudadas;
+- Acompanhe seu progresso por meio de barras visuais.
+
+### 📅 Calendário
+Acompanhe sua rotina de estudos:
+- Marque os dias em que estudou;
+- Visualize sua sequência de dias consecutivos (*streak*);
+- Consulte as horas estudadas no mês e no ano.
+
+### 🏆 Conquistas
+Desbloqueie conquistas automaticamente conforme utiliza a plataforma:
+- Dias de *streak*;
+- Horas estudadas;
+- Matérias concluídas;
+- Perguntas feitas para a IA;
+- Entre outros objetivos.
+
+### 🕓 Histórico
+Todas as suas conversas com a IA ficam salvas para que você possa consultá-las e retomá-las sempre que desejar.
+
 
 
 
