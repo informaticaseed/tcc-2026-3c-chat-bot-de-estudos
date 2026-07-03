@@ -73,17 +73,29 @@ Todas as suas conversas com a IA ficam salvas para que você possa consultá-las
 
 ## 📁 Estrutura do projeto
 
-```
-├── README.md           ← este arquivo
-├── BACKLOG.md          ← resumo fixo do MVP e links
+├── README.md                 ← documentação principal do projeto
+├── BACKLOG.md                ← funcionalidades planejadas e progresso do MVP
 ├── docs/
-│   ├── arquitetura.md  ← diagrama de arquitetura
-│   └── decisoes/       ← registros de decisão técnica (ADR)
-├── diagramas/          ← imagens e diagramas
-├── evidencias/         ← screenshots das demos
-├── src/                ← código do sistema
-└── tests/              ← testes automáticos
-```
+│   ├── arquitetura.md        ← arquitetura do chatbot e fluxo de funcionamento
+│   ├── instalacao.md         ← guia de instalação e configuração
+│   └── decisoes/             ← registros das decisões técnicas (ADR)
+├── diagramas/
+│   ├── fluxo-chatbot.png     ← fluxo de conversa do chatbot
+│   └── arquitetura.png       ← diagrama da arquitetura do sistema
+├── evidencias/
+│   ├── tela-inicial.png      ← tela inicial do chatbot
+│   ├── pesquisas.png         ← exemplos de pesquisas realizadas
+│   └── testes.png            ← capturas dos testes do sistema
+├── src/
+│   ├── app.py                ← ponto de entrada da aplicação
+│   ├── chatbot.py            ← lógica principal do chatbot
+│   ├── repositorio.py        ← acesso e gerenciamento dos dados
+│   ├── respostas.py          ← respostas e conteúdos de estudo
+│   └── utils.py              ← funções auxiliares
+├── tests/
+│   ├── test_chatbot.py       ← testes do funcionamento do chatbot
+│   └── test_repositorio.py   ← testes do repositório de dados
+└── requirements.txt          ← dependências do projeto
 
 ---
 
