@@ -18,3 +18,4 @@ Revisar os conteúdos e códigos feitos em aula para entender melhor o funcionam
 Participar mais das atividades em grupo e tirar dúvidas quando tiver dificuldades.,
 .
 
+ 
