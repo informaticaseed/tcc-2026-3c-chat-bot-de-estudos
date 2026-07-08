@@ -15,4 +15,6 @@ Neste bimestre eu poderia ter me dedicado mais ao desenvolvimento do projeto e �
 6. Plano para o 3º bimestre
 Organizar melhor meu tempo para entregar as atividades dentro do prazo.
 Revisar os conteúdos e códigos feitos em aula para entender melhor o funcionamento do projeto.
-Participar mais das atividades em grupo e tirar dúvidas quando tiver dificuldades. 
+Participar mais das atividades em grupo e tirar dúvidas quando tiver dificuldades.,
+.
+
