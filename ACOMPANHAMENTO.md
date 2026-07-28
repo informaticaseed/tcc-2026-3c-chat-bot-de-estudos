@@ -1,7 +1,6 @@
 # Acompanhamento Quinzenal — Prof. Rafael
-**Grupo:** [Nome do Grupo]
-**Turma:** 3A / 3B / 3C
-**Repositório:** [link]
+**Grupo:** chat bot de estudos
+**Turma:** 3C
 
 ---
 
@@ -11,9 +10,18 @@
 
 | Integrante | O que se comprometeu a fazer |
 |-----------|------------------------------|
-| (nome 1) | |
-| (nome 2) | |
-| (nome 3) | |
+| Asafe | referência bibliográfica |
+| Adryan | Atualizar backlog do GitHub; subir projeto no repositório no GitHub |
+| Riquelme | introdução e levantamento de requisitos |
+| Enzo | backend/banco de dados finalizados |
+| Livia | caso de uso e estilização da página|
+
+Etapas:
+- Parte escrita: caso de uso, referência bibliográfica, levantamento de requisitos,  estilização da página
+- Desenvolvimento: refatoração do código/designer; lincar o banco de dados; finalizar o desenvolvimento do banco de dados/back-end; subir projeto no repositório no GitHub; 
+- Atualizar backlog do GitHub
+
+
 
 ### Verificação em 08/08
 
