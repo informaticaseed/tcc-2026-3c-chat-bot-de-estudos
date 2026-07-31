@@ -1,4 +1,4 @@
-# TCC 2026 — [Nome do Grupo]
+# TCC 2026 — PANC'S
 **LTP3 + QP3 · CEMIC 2026 · Prof. Rafael Martins Alves**
 
 ---
@@ -15,6 +15,12 @@
 
 **Tema:** CHATBOOT DE ESTUDOS
 **Tecnologia:** JavaScript e PHP
+| (Carolinne Alves da Mota) | carolinnealvesdamota-cell | 3C |
+| (Luiz Eduardo de Toledo Aleixo) | luiztoledoaleixo-cell | 3C |
+| (Ana Carolina Carvalho Rodrigues) | anacarolinacarvalhorodrigues-cell | 3C |
+
+**Tema:** (Desenvolvimento de um site informativo sobre Plantas Alimentícias Não Convencionais (PANC’s).)
+**Tecnologia:** Python + Flask + SQLite
 
 ---
 
@@ -59,6 +65,8 @@ Todas as suas conversas com a IA ficam salvas para que você possa consultá-las
 
 
 
+(O sistema consiste em um site informativo desenvolvido para divulgar conhecimento sobre as Plantas Alimentícias Não Convencionais (PANC’s). O objetivo é facilitar o acesso da população a informações confiáveis sobre identificação, benefícios e formas de utilização dessas plantas na alimentação do dia a dia.
+O site busca promover educação alimentar e conscientização sobre alternativas sustentáveis e nutritivas presentes na biodiversidade brasileira.)
 
 ---
 
@@ -111,4 +119,6 @@ python src/app.py
 
 # Rodar os testes
 pytest tests/ -v
-```
+``` 
+ 
+ 
