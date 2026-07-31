@@ -1,0 +1,69 @@
+:root {
+  --bg: #0d0f1a;
+  --surface: #141728;
+  --surface2: #1c2035;
+  --border: #2a2f4a;
+  --accent: #4f8aff;
+  --accent2: #a78bfa;
+  --accent3: #34d399;
+  --gold: #f59e0b;
+  --danger: #f87171;
+  --text: #e8ecff;
+  --text-dim: #8892b0;
+  --text-muted: #4a5178;
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 10% 0%,
+      rgba(79, 138, 255, 0.1) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 90% 100%,
+      rgba(167, 139, 250, 0.08) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

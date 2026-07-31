@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phynix — Seu Parceiro de Estudos</title>
+    <!-- Fontes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/chat.css" />
+    <link rel="stylesheet" href="css/planner.css" />
+    <link rel="stylesheet" href="css/calendar.css" />
+    <link rel="stylesheet" href="css/achievements.css" />
+    <link rel="stylesheet" href="css/history.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/toast.css" />
+
+    <!-- Estilos de acessibilidade (temas, fontes, alto contraste) -->
+    <link rel="stylesheet" href="css/accessibility.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- ══════════════════════════════════════
+       SIDEBAR
+  ══════════════════════════════════════ -->
+      <aside id="sidebar">
+        <div class="logo">
+          <div class="logo-icon">
+            <img src="./assets/images/fenix.png" alt="Phynix" class="logo-fenix" />
+          </div>
+          <div class="logo-text">Phy<span>nix</span></div>
+        </div>
+
+        <div class="nav-label">Menu</div>
+
+        <button
+          class="nav-btn active"
+          onclick="switchTab('chat')"
+          aria-label="Conversas"
+        >
+          <span class="icon">💬</span> Conversas
+        </button>
+        <button
+          class="nav-btn"
+          onclick="switchTab('planner')"
+          aria-label="Planner"
+        >
+          <span class="icon">📋</span> Planner
+        </button>
+        <button
+          class="nav-btn"
+          onclick="switchTab('calendar')"
+          aria-label="Calendário"
+        >
+          <span class="icon">📅</span> Calendário
+        </button>
+        <button
+          class="nav-btn"
+          onclick="switchTab('achievements')"
+          aria-label="Conquistas"
+        >
+          <span class="icon">🏆</span> Conquistas
+        </button>
+        <button
+          class="nav-btn"
+          onclick="switchTab('history')"
+          aria-label="Histórico"
+        >
+          <span class="icon">🕓</span> Histórico
+        </button>
+
+        <div
+          class="streak-widget"
+          onclick="switchTab('achievements')"
+          title="Sequência de estudos"
+        >
+          <span class="streak-fire" id="streak-fire-icon">
+            <svg
+              width="48"
+              height="60"
+              viewBox="0 0 80 105"
+              xmlns="http://www.w3.org/2000/svg"
+              style="display: block"
+            >
+              <defs>
+                <radialGradient id="glow" cx="50%" cy="85%" r="50%">
+                  <stop offset="0%" stop-color="#ff7700" stop-opacity=".55" />
+                  <stop offset="100%" stop-color="#ff4400" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient
+                  id="outerFlame"
+                  x1="40"
+                  y1="5"
+                  x2="40"
+                  y2="95"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0%" stop-color="#ff4422" />
+                  <stop offset="60%" stop-color="#ff6600" />
+                  <stop offset="100%" stop-color="#cc2200" />
+                </linearGradient>
+                <linearGradient
+                  id="innerFlame"
+                  x1="40"
+                  y1="30"
+                  x2="40"
+                  y2="90"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0%" stop-color="#ffe566" />
+                  <stop offset="45%" stop-color="#ffaa00" />
+                  <stop offset="100%" stop-color="#ff6600" />
+                </linearGradient>
+              </defs>
+              <ellipse
+                class="flame-glw"
+                cx="40"
+                cy="93"
+                rx="28"
+                ry="8"
+                fill="url(#glow)"
+              />
+              <g class="flame-f2">
+                <path
+                  d="M40 8 C40 8,58 28,62 50 C65 65,60 78,55 85 C62 75,63 60,58 48 C60 62,56 74,50 82 C55 68,54 52,48 38 C50 55,48 68,42 78 C44 60,42 42,38 28 C36 44,35 60,30 74 C26 64,22 52,26 38 C20 52,20 66,26 80 C20 72,16 60,18 48 C14 62,16 76,24 86 C18 78,16 65,20 52 C15 65,17 80,28 89 C22 82,20 72,22 62 C18 72,20 85,32 93 C36 95,40 96,44 95 C56 92,62 82,60 70 C64 80,64 90,58 95 C66 88,68 76,64 62 C68 72,66 84,60 90 C66 82,66 68,62 56 C64 68,62 80,56 88 C60 76,62 62,58 48 C62 60,62 74,56 84 C60 70,60 54,54 40 C52 55,52 70,46 82 C46 65,46 48,40 30 Z"
+                  fill="url(#outerFlame)"
+                  opacity="0.9"
+                />
+              </g>
+              <g class="flame-f1">
+                <path
+                  d="M40 6 C46 20,60 36,62 56 C64 72,56 86,46 92 C50 80,50 64,44 50 C46 64,44 78,38 88 C32 78,30 64,32 50 C26 64,26 80,30 92 C20 86,16 72,18 56 C20 36,34 20,40 6 Z"
+                  fill="url(#outerFlame)"
+                />
+                <path
+                  d="M40 34 C43 44,50 56,50 66 C50 76,46 84,40 87 C34 84,30 76,30 66 C30 56,37 44,40 34 Z"
+                  fill="url(#innerFlame)"
+                />
+              </g>
+              <circle class="flame-e1" cx="34" cy="80" r="2.5" fill="#ffdd44" />
+              <circle class="flame-e2" cx="47" cy="75" r="2" fill="#ffaa22" />
+              <circle class="flame-e3" cx="40" cy="82" r="1.8" fill="#ffee66" />
+              <circle class="flame-e4" cx="44" cy="85" r="2.2" fill="#ff8800" />
+            </svg>
+          </span>
+          <div class="streak-count" id="sidebar-streak">0</div>
+          <div class="streak-label">dias seguidos</div>
+        </div>
+      </aside>
+
+      <!-- ══════════════════════════════════════
+       ÁREA PRINCIPAL
+  ══════════════════════════════════════ -->
+      <main id="main">
+        <!-- Barra de abas -->
+        <div id="tab-bar" role="tablist">
+          <button
+            class="tab active"
+            onclick="switchTab('chat')"
+            role="tab"
+            aria-selected="true"
+          >
+            💬 Conversa
+          </button>
+          <button class="tab" onclick="switchTab('planner')" role="tab">
+            📋 Planner
+          </button>
+          <button class="tab" onclick="switchTab('calendar')" role="tab">
+            📅 Calendário
+          </button>
+          <button class="tab" onclick="switchTab('achievements')" role="tab">
+            🏆 Conquistas
+          </button>
+        </div>
+
+        <!-- ── PAINEL: CHAT ── -->
+        <div class="panel active" id="chat-panel">
+          <div
+            id="chat-header"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 12px">
+              <div class="ai-avatar">
+                <img src="./assets/images/fenix.png" alt="Phynix AI" class="avatar-fenix" />
+              </div>
+              <div class="ai-info">
+                <h3>Assistente EstudaAI</h3>
+                <div class="ai-status">Online — Pronto para estudar</div>
+              </div>
+            </div>
+            <button
+              class="btn"
+              onclick="startNewChat()"
+              style="font-size: 12px; padding: 6px 12px"
+            >
+              + Nova Conversa
+            </button>
+          </div>
+
+          <div
+            id="messages"
+            role="log"
+            aria-live="polite"
+            aria-label="Conversa com o assistente"
+          >
+            <!-- Mensagens iniciais via JS -->
+          </div>
+
+          <div id="quick-prompts">
+            <button class="qp" onclick="sendQuick('Explique a Lei de Mendel')">
+              🧬 Lei de Mendel
+            </button>
+            <button
+              class="qp"
+              onclick="sendQuick('Como resolver equações do 2° grau?')"
+            >
+              📐 Equações 2°grau
+            </button>
+            <button
+              class="qp"
+              onclick="sendQuick('Resumo da Proclamação da República')"
+            >
+              📜 História BR
+            </button>
+            <button
+              class="qp"
+              onclick="sendQuick('Técnicas para memorizar melhor')"
+            >
+              🧠 Memorização
+            </button>
+            <button
+              class="qp"
+              onclick="sendQuick('Dicas para redação do ENEM')"
+            >
+              ✍️ Redação ENEM
+            </button>
+            <button
+              class="qp"
+              onclick="sendQuick('Crie um exercício de interpretação de texto')"
+            >
+              📖 Exercício
+            </button>
+          </div>
+
+          <div id="input-area">
+            <textarea
+              id="user-input"
+              placeholder="Pergunte qualquer coisa sobre concursos ou vestibulares…"
+              rows="1"
+              aria-label="Campo de mensagem"
+              onkeydown="handleKey(event)"
+            ></textarea>
+            <button
+              id="send-btn"
+              onclick="sendMessage()"
+              aria-label="Enviar mensagem"
+            >
+              ➤
+            </button>
+          </div>
+        </div>
+        <!-- /chat-panel -->
+
+        <!-- ── PAINEL: PLANNER ── -->
+        <div class="panel" id="planner-panel">
+          <div>
+            <div class="section-title">📋 Planner de Estudos</div>
+            <div class="section-sub">
+              Organize suas matérias, metas e acompanhe seu progresso.
+            </div>
+
+            <div class="add-row">
+              <input
+                class="inp inp-subject"
+                type="text"
+                id="inp-subject"
+                placeholder="Matéria (ex: Matemática)"
+                aria-label="Matéria"
+              />
+              <input
+                class="inp inp-hours"
+                type="number"
+                id="inp-hours"
+                placeholder="Meta h"
+                min="1"
+                max="200"
+                aria-label="Meta de horas"
+              />
+              <input
+                class="inp inp-days"
+                type="text"
+                id="inp-days"
+                placeholder="Dias/sem"
+                aria-label="Dias por semana"
+              />
+              <input
+                class="inp"
+                type="color"
+                id="inp-color"
+                value="#4f8aff"
+                style="width: 46px; padding: 6px; cursor: pointer"
+                aria-label="Cor da matéria"
+              />
+              <button class="btn btn-primary" onclick="addSubject()">
+                + Adicionar
+              </button>
+            </div>
+
+            <div class="table-wrap">
+              <table
+                id="planner-table"
+                aria-label="Tabela de planejamento de estudos"
+              >
+                <thead>
+                  <tr>
+                    <th>Matéria</th>
+                    <th>Meta (h)</th>
+                    <th>Feito (h)</th>
+                    <th>Progresso</th>
+                    <th>Dias/sem</th>
+                    <th>Hoje 🔥</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="planner-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- /planner-panel -->
+
+        <!-- ── PAINEL: CALENDÁRIO ── -->
+        <div class="panel" id="calendar-panel">
+          <div>
+            <div class="stats-row">
+              <div
+                class="stat-card"
+                style="--grad: linear-gradient(90deg, #4f8aff, #a78bfa)"
+              >
+                <div class="stat-ico">🔥</div>
+                <div class="stat-val" id="stat-streak">0</div>
+                <div class="stat-lbl">Dias seguidos</div>
+              </div>
+              <div
+                class="stat-card"
+                style="--grad: linear-gradient(90deg, #34d399, #059669)"
+              >
+                <div class="stat-ico">📅</div>
+                <div class="stat-val" id="stat-total">0</div>
+                <div class="stat-lbl">Total de dias estudados</div>
+              </div>
+              <div
+                class="stat-card"
+                style="--grad: linear-gradient(90deg, #f59e0b, #f97316)"
+              >
+                <div class="stat-ico">⏱️</div>
+                <div class="stat-val" id="stat-hours">0h</div>
+                <div class="stat-lbl">Horas este mês</div>
+              </div>
+              <div
+                class="stat-card"
+                style="--grad: linear-gradient(90deg, #a78bfa, #ec4899)"
+              >
+                <div class="stat-ico">🗓️</div>
+                <div class="stat-val" id="stat-year-hours">0h</div>
+                <div class="stat-lbl">Horas este ano</div>
+              </div>
+            </div>
+
+            <div class="cal-header">
+              <div class="section-title">📅 Calendário de Estudos</div>
+              <div class="cal-nav">
+                <button
+                  class="cal-arrow"
+                  onclick="changeMonth(-1)"
+                  aria-label="Mês anterior"
+                >
+                  ‹
+                </button>
+                <div class="cal-month" id="cal-month-label">—</div>
+                <button
+                  class="cal-arrow"
+                  onclick="changeMonth(1)"
+                  aria-label="Próximo mês"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+
+            <div class="cal-grid" id="cal-grid" aria-label="Calendário"></div>
+
+            <div class="cal-legend">
+              <div class="cal-legend-item">
+                <div
+                  class="cal-legend-dot"
+                  style="background: rgba(79, 138, 255, 0.4)"
+                ></div>
+                Dia estudado
+              </div>
+              <div class="cal-legend-item">
+                <div
+                  class="cal-legend-dot"
+                  style="background: rgba(245, 158, 11, 0.4)"
+                ></div>
+                Sequência ativa
+              </div>
+              <div class="cal-legend-item">
+                <div
+                  class="cal-legend-dot"
+                  style="border: 2px solid var(--accent)"
+                ></div>
+                Hoje
+              </div>
+            </div>
+
+            <div style="margin-top: 20px">
+              <button class="btn btn-primary" onclick="markToday()">
+                ✅ Marcar hoje como estudado
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- /calendar-panel -->
+
+        <!-- ── PAINEL: CONQUISTAS ── -->
+        <div class="panel" id="achievements-panel">
+          <div>
+            <div class="section-title">🏆 Conquistas</div>
+            <div class="section-sub">
+              Complete metas e desbloqueie conquistas! Sua jornada rumo à
+              aprovação.
+            </div>
+            <div class="ach-grid" id="ach-grid"></div>
+          </div>
+        </div>
+        <!-- /achievements-panel -->
+
+        <!-- ── PAINEL: HISTÓRICO DE CONVERSAS ── -->
+        <div class="panel" id="history-panel">
+          <div>
+            <div class="section-title">🕓 Histórico de Conversas</div>
+            <div class="section-sub">
+              Veja suas interações passadas com o EstudaAI.
+            </div>
+            <div id="history-list" class="ach-grid">
+              <!-- Cards de histórico injetados via JS -->
+            </div>
+          </div>
+        </div>
+        <!-- /history-panel -->
+      </main>
+    </div>
+    <!-- /app -->
+
+    <!-- ══════════════════════════════════════
+     NOTIFICAÇÃO TOAST
+══════════════════════════════════════ -->
+    <div id="toast" role="alert" aria-live="assertive">
+      <div class="toast-icon" id="toast-icon">🏆</div>
+      <div class="toast-text">
+        <div class="toast-title" id="toast-title">Conquista desbloqueada!</div>
+        <div class="toast-sub" id="toast-sub"></div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     MODAL: META DIÁRIA
+══════════════════════════════════════ -->
+    <div class="modal-overlay" id="modal">
+      <div class="modal">
+        <h3>🎯 Definir meta diária</h3>
+        <p>Quantas horas você quer estudar por dia?</p>
+        <input
+          class="inp"
+          type="number"
+          id="goal-inp"
+          style="width: 100%"
+          placeholder="Ex: 4"
+          min="1"
+          max="24"
+        />
+        <div class="modal-row">
+          <button class="btn btn-primary" style="flex: 1" onclick="saveGoal()">
+            Salvar meta
+          </button>
+          <button
+            class="btn"
+            style="
+              background: var(--surface2);
+              border: 1px solid var(--border);
+              color: var(--text-dim);
+              flex: 1;
+            "
+            onclick="closeModal()"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+    <script type="module" src="js/app.js"></script>
+    <script src="js/modules/accessibility.js"></script>
+  </body>
+</html>
