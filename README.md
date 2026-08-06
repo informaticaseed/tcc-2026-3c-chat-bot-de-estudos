@@ -9,7 +9,7 @@
 |--------------|--------|-------|
 | Riquelme | @riquelmesouza01 | 3C |
 | Adryan | @Adryan16isaque | 3C |
-| Livia | @liviaoliveirasantosflor-cloud | 3C |
+| Livia | @liviaoliveirasantosflor-cloud | 3C |  
 | Asafe | @asafe4671-byte | 3C |
 | Enzo | @enzosantosdutra | 3C |
 
