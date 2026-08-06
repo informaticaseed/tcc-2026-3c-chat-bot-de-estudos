@@ -79,6 +79,7 @@ O site busca promover educação alimentar e conscientização sobre alternativa
 
 ---
 
+
 ## 📁 Estrutura do projeto
 
 ├── README.md                 ← documentação principal do projeto
