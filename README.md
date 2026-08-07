@@ -1,6 +1,6 @@
 # TCC 2026 — PANC'S
 **LTP3 + QP3 · CEMIC 2026 · Prof. Rafael Martins Alves**
-
+ 
 ---
 
 ## 👥 Integrantes
@@ -9,7 +9,7 @@
 |--------------|--------|-------|
 | Riquelme | @riquelmesouza01 | 3C |
 | Adryan | @Adryan16isaque | 3C |
-| Livia | @liviaoliveirasantosflor-cloud | 3C |
+| Livia | @liviaoliveirasantosflor-cloud | 3C |  
 | Asafe | @asafe4671-byte | 3C |
 | Enzo | @enzosantosdutra | 3C |
 
@@ -78,6 +78,7 @@ O site busca promover educação alimentar e conscientização sobre alternativa
 4. **Push** — métricas de participação aparecem automaticamente no Actions
 
 ---
+
 
 ## 📁 Estrutura do projeto
 
