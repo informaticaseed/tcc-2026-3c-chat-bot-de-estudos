@@ -17,9 +17,8 @@
 | Livia | caso de uso e estilização da página|
 
 Etapas:
-- Parte escrita: caso de uso, referência bibliográfica, levantamento de requisitos,  estilização da página
-- Desenvolvimento: refatoração do código/designer; lincar o banco de dados; finalizar o desenvolvimento do banco de dados/back-end; subir projeto no repositório no GitHub; 
-- Atualizar backlog do GitHub
+- Parte escrita: caso de uso, referência bibliográfica,  estilização da página
+- Desenvolvimento: refatoração do código/designer; finalizar o desenvolvimento do banco de dados/back-end;  
 
 
 
@@ -38,13 +37,15 @@ Etapas:
 
 ## Quinzena 2 — 10/08 a 22/08
 
-### Compromissos assumidos em 10/08
+### Compromissos assumidos em 11/08
 
 | Integrante | O que se comprometeu a fazer |
 |-----------|------------------------------|
-| (nome 1) | |
-| (nome 2) | |
-| (nome 3) | |
+| Asafe | referência bibliográfica |
+| Adryan | refatoração do código/designer: iniciar o frontend e deixar funcional |
+| Riquelme | diagrama caso de uso; modelo entidade relacionamento do banco de dados|
+| Enzo | enviar os arquivos do backend e banco de dados nos repositórios github |
+| Livia | Metodologia, fundamentação teórica|
 
 ### Verificação em 22/08
 
