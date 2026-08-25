@@ -1,0 +1,175 @@
+/* ═══════════════════════════════════════════════════════════
+   AUTH.CSS — EstudaAI
+   Tela de login / cadastro exibida antes de liberar o app.
+   Reaproveita as variáveis de tema definidas em main.css.
+   ═══════════════════════════════════════════════════════════ */
+
+#auth-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.auth-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.auth-logo-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.auth-logo .logo-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.auth-logo .logo-text span { color: var(--accent); }
+
+.auth-tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--surface2);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.16s;
+}
+
+.auth-tab.active {
+  background: var(--surface);
+  color: var(--accent);
+}
+
+.auth-form {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-form.active { display: flex; }
+
+.auth-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-top: 10px;
+}
+
+.auth-form .inp {
+  width: 100%;
+}
+
+.auth-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.auth-error {
+  display: none;
+  background: rgba(248,113,113,0.12);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.auth-error.show { display: block; }
+
+/* ── Área do usuário / logout na sidebar ─────────────────── */
+.sidebar-user {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-logout {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.16s;
+}
+
+.sidebar-logout:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* Botão "🔥 Concluir hoje" na tabela do planner */
+.btn-fire {
+  background: rgba(249,115,22,0.14);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+.btn-fire:hover { background: rgba(249,115,22,0.24); }
+
+.btn-fire.done {
+  background: rgba(52,211,153,0.16);
+  border-color: var(--accent3);
+  color: var(--accent3);
+}
