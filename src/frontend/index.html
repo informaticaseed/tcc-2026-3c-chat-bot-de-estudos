@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EstudaAI — Seu Parceiro de Estudos</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos principais -->
+  <link rel="stylesheet" href="main.css">
+
+  <!-- Estilos de acessibilidade (temas, fontes, alto contraste) -->
+  <link rel="stylesheet" href="accessibility.css">
+
+  <!-- Estilos da tela de login/cadastro -->
+  <link rel="stylesheet" href="auth.css">
+
+  <!-- Estilos do histórico de chat e edição de mensagens -->
+  <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     TELA DE LOGIN / CADASTRO
+     (fica visível até confirmarmos sessão via /api/auth/me.php)
+══════════════════════════════════════ -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <img src="assets/fenix.png" alt="" class="auth-logo-img">
+      <div class="logo-text">Estuda<span>AI</span></div>
+    </div>
+
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab active" id="tab-login-btn"    onclick="switchAuthTab('login')"    role="tab" aria-selected="true">Entrar</button>
+      <button class="auth-tab"        id="tab-register-btn" onclick="switchAuthTab('register')" role="tab" aria-selected="false">Criar conta</button>
+    </div>
+
+    <div class="auth-error" id="auth-error" role="alert"></div>
+
+    <!-- FORM: LOGIN -->
+    <form class="auth-form active" id="login-form" onsubmit="return handleLogin(event)">
+      <label class="auth-label" for="login-email">E-mail</label>
+      <input class="inp" type="email" id="login-email" autocomplete="email" required>
+
+      <label class="auth-label" for="login-password">Senha</label>
+      <input class="inp" type="password" id="login-password" autocomplete="current-password" required>
+
+      <button class="btn btn-primary auth-submit" type="submit">Entrar</button>
+    </form>
+
+    <!-- FORM: CADASTRO -->
+    <form class="auth-form" id="register-form" onsubmit="return handleRegister(event)">
+      <label class="auth-label" for="register-name">Nome</label>
+      <input class="inp" type="text" id="register-name" autocomplete="name" required>
+
+      <label class="auth-label" for="register-email">E-mail</label>
+      <input class="inp" type="email" id="register-email" autocomplete="email" required>
+
+      <label class="auth-label" for="register-password">Senha</label>
+      <input class="inp" type="password" id="register-password" autocomplete="new-password" minlength="6" required>
+      <div class="auth-hint">Mínimo de 6 caracteres.</div>
+
+      <button class="btn btn-primary auth-submit" type="submit">Criar conta</button>
+    </form>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+
+  <!-- ══════════════════════════════════════
+       SIDEBAR
+  ══════════════════════════════════════ -->
+  <aside id="sidebar">
+    <div class="logo">
+      <div class="logo-icon">🎯</div>
+      <div class="logo-text">Estuda<span>AI</span></div>
+    </div>
+
+    <div class="nav-label">Menu</div>
+
+    <button class="nav-btn active" onclick="switchTab('chat')" aria-label="Chat IA">
+      <span class="icon">💬</span> Chat IA
+    </button>
+    <button class="nav-btn" onclick="switchTab('planner')" aria-label="Planner">
+      <span class="icon">📋</span> Planner
+    </button>
+    <button class="nav-btn" onclick="switchTab('calendar')" aria-label="Calendário">
+      <span class="icon">📅</span> Calendário
+    </button>
+    <button class="nav-btn" onclick="switchTab('achievements')" aria-label="Conquistas">
+      <span class="icon">🏆</span> Conquistas
+    </button>
+
+    <div class="streak-widget" onclick="switchTab('achievements')" title="Sequência de estudos">
+      <span class="streak-fire" id="streak-fire-icon">🔥</span>
+      <div class="streak-count" id="sidebar-streak">0</div>
+      <div class="streak-label">dias seguidos</div>
+    </div>
+
+    <button class="nav-btn" onclick="openModal()" aria-label="Definir meta diária" style="margin-top:10px">
+      <span class="icon">🎯</span> Meta diária
+    </button>
+
+    <div class="sidebar-user">
+      <div class="sidebar-user-name" id="sidebar-user-name">—</div>
+      <button class="sidebar-logout" onclick="handleLogout()" aria-label="Sair da conta">🚪 Sair</button>
+    </div>
+  </aside>
+
+
+  <!-- ══════════════════════════════════════
+       ÁREA PRINCIPAL
+  ══════════════════════════════════════ -->
+  <main id="main">
+
+    <!-- Barra de abas -->
+    <div id="tab-bar" role="tablist">
+      <button class="tab active" onclick="switchTab('chat')"         role="tab" aria-selected="true">💬 Chat IA</button>
+      <button class="tab"        onclick="switchTab('planner')"      role="tab">📋 Planner</button>
+      <button class="tab"        onclick="switchTab('calendar')"     role="tab">📅 Calendário</button>
+      <button class="tab"        onclick="switchTab('achievements')" role="tab">🏆 Conquistas</button>
+    </div>
+
+    <!-- ── PAINEL: CHAT ── -->
+    <div class="panel active" id="chat-panel">
+
+      <div id="chat-header">
+        <div class="ai-avatar">🤖</div>
+        <div class="ai-info">
+          <h3>Assistente EstudaAI</h3>
+          <div class="ai-status">Online — Pronto para estudar</div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="chat-header-btn" onclick="startNewChat()" aria-label="Nova conversa" title="Nova conversa">➕</button>
+          <button class="chat-header-btn" onclick="toggleHistory()" aria-label="Histórico de conversas" title="Histórico">🕘</button>
+        </div>
+      </div>
+
+      <div id="history-overlay" onclick="closeHistory()"></div>
+      <aside id="history-panel" aria-label="Histórico de conversas" role="dialog">
+        <div class="history-header">
+          <span>🕘 Conversas</span>
+          <button class="history-close" onclick="closeHistory()" aria-label="Fechar histórico">✕</button>
+        </div>
+        <div id="history-list"></div>
+      </aside>
+
+      <div id="messages" role="log" aria-live="polite" aria-label="Conversa com o assistente">
+        <div class="msg ai">
+          <div class="msg-avatar">🤖</div>
+          <div class="msg-bubble">
+            Olá! 👋 Sou o seu assistente de estudos para <strong>concursos e vestibulares</strong>. Posso te ajudar com:<br><br>
+            • Explicações de matérias (Matemática, Português, História...)<br>
+            • Questões e exercícios<br>
+            • Técnicas de memorização<br>
+            • Estratégias para provas<br>
+            • Montagem de cronograma<br><br>
+            Por qual matéria quer começar hoje? 🎯
+          </div>
+        </div>
+      </div>
+
+      <div id="quick-prompts">
+        <button class="qp" onclick="sendQuick('Explique a Lei de Mendel')">🧬 Lei de Mendel</button>
+        <button class="qp" onclick="sendQuick('Como resolver equações do 2° grau?')">📐 Equações 2°grau</button>
+        <button class="qp" onclick="sendQuick('Resumo da Proclamação da República')">📜 História BR</button>
+        <button class="qp" onclick="sendQuick('Técnicas para memorizar melhor')">🧠 Memorização</button>
+        <button class="qp" onclick="sendQuick('Dicas para redação do ENEM')">✍️ Redação ENEM</button>
+        <button class="qp" onclick="sendQuick('Crie um exercício de interpretação de texto')">📖 Exercício</button>
+      </div>
+
+      <div id="input-area">
+        <textarea
+          id="user-input"
+          placeholder="Pergunte qualquer coisa sobre concursos ou vestibulares…"
+          rows="1"
+          aria-label="Campo de mensagem"
+          onkeydown="handleKey(event)"
+        ></textarea>
+        <button id="send-btn" onclick="sendMessage()" aria-label="Enviar mensagem">➤</button>
+      </div>
+
+    </div><!-- /chat-panel -->
+
+    <!-- ── PAINEL: PLANNER ── -->
+    <div class="panel" id="planner-panel">
+      <div>
+        <div class="section-title">📋 Planner de Estudos</div>
+        <div class="section-sub">Organize suas matérias, metas e acompanhe seu progresso.</div>
+
+        <div class="add-row">
+          <input class="inp inp-subject" type="text"    id="inp-subject" placeholder="Matéria (ex: Matemática)" aria-label="Matéria">
+          <input class="inp inp-hours"   type="number"  id="inp-hours"   placeholder="Meta h" min="1" max="200"  aria-label="Meta de horas">
+          <input class="inp inp-days"    type="text"    id="inp-days"    placeholder="Dias/sem"                  aria-label="Dias por semana">
+          <input class="inp"             type="color"   id="inp-color"   value="#4f8aff"
+                 style="width:46px;padding:6px;cursor:pointer;" aria-label="Cor da matéria">
+          <button class="btn btn-primary" onclick="addSubject()">+ Adicionar</button>
+        </div>
+
+        <div class="table-wrap">
+          <table id="planner-table" aria-label="Tabela de planejamento de estudos">
+            <thead>
+              <tr>
+                <th>Matéria</th>
+                <th>Meta (h)</th>
+                <th>Feito (mês)</th>
+                <th>Progresso</th>
+                <th>Dias/sem</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="planner-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /planner-panel -->
+
+    <!-- ── PAINEL: CALENDÁRIO ── -->
+    <div class="panel" id="calendar-panel">
+      <div>
+
+        <div class="stats-row">
+          <div class="stat-card" style="--grad:linear-gradient(90deg,#4f8aff,#a78bfa)">
+            <div class="stat-ico">🔥</div>
+            <div class="stat-val" id="stat-streak">0</div>
+            <div class="stat-lbl">Dias seguidos</div>
+          </div>
+          <div class="stat-card" style="--grad:linear-gradient(90deg,#34d399,#059669)">
+            <div class="stat-ico">📅</div>
+            <div class="stat-val" id="stat-total">0</div>
+            <div class="stat-lbl">Total de dias estudados</div>
+          </div>
+          <div class="stat-card" style="--grad:linear-gradient(90deg,#f59e0b,#f97316)">
+            <div class="stat-ico">⏱️</div>
+            <div class="stat-val" id="stat-hours">0h</div>
+            <div class="stat-lbl">Horas este mês</div>
+          </div>
+        </div>
+
+        <div class="cal-header">
+          <div class="section-title">📅 Calendário de Estudos</div>
+          <div class="cal-nav">
+            <button class="cal-arrow" onclick="changeMonth(-1)" aria-label="Mês anterior">‹</button>
+            <div class="cal-month" id="cal-month-label">—</div>
+            <button class="cal-arrow" onclick="changeMonth(1)"  aria-label="Próximo mês">›</button>
+          </div>
+        </div>
+
+        <div class="cal-grid" id="cal-grid" aria-label="Calendário"></div>
+
+        <div class="cal-legend">
+          <div class="cal-legend-item">
+            <div class="cal-legend-dot" style="background:rgba(79,138,255,0.4)"></div> Dia estudado
+          </div>
+          <div class="cal-legend-item">
+            <div class="cal-legend-dot" style="background:rgba(245,158,11,0.4)"></div> Sequência ativa
+          </div>
+          <div class="cal-legend-item">
+            <div class="cal-legend-dot" style="border:2px solid var(--accent)"></div> Hoje
+          </div>
+        </div>
+
+        <div style="margin-top:20px">
+          <button class="btn btn-primary" onclick="markToday()">✅ Marcar hoje como estudado</button>
+        </div>
+
+      </div>
+    </div><!-- /calendar-panel -->
+
+    <!-- ── PAINEL: CONQUISTAS ── -->
+    <div class="panel" id="achievements-panel">
+      <div>
+        <div class="section-title">🏆 Conquistas</div>
+        <div class="section-sub">Complete metas e desbloqueie conquistas! Sua jornada rumo à aprovação.</div>
+        <div class="ach-grid" id="ach-grid"></div>
+      </div>
+    </div><!-- /achievements-panel -->
+
+  </main>
+</div><!-- /app -->
+
+<!-- ══════════════════════════════════════
+     NOTIFICAÇÃO TOAST
+══════════════════════════════════════ -->
+<div id="toast" role="alert" aria-live="assertive">
+  <div class="toast-icon" id="toast-icon">🏆</div>
+  <div class="toast-text">
+    <div class="toast-title" id="toast-title">Conquista desbloqueada!</div>
+    <div class="toast-sub"   id="toast-sub"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     MODAL: META DIÁRIA
+══════════════════════════════════════ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>🎯 Definir meta diária</h3>
+    <p>Quantas horas você quer estudar por dia?</p>
+    <input class="inp" type="number" id="goal-inp" style="width:100%" placeholder="Ex: 4" min="1" max="24">
+    <div class="modal-row">
+      <button class="btn btn-primary" style="flex:1" onclick="saveGoal()">Salvar meta</button>
+      <button class="btn" style="background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);flex:1"
+              onclick="closeModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+     Ordem: app.js primeiro, accessibility.js depois
+══════════════════════════════════════ -->
+<script src="app.js"></script>
+<script src="accessibility.js"></script>
+
+</body>
+</html>
