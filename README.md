@@ -5,7 +5,7 @@
 ## 👥 Integrantes   
 
 | Nome completo | GitHub | Turma |
-|--------------|--------|-------|
+|--------------|--------|-------|    
 | Riquelme | @riquelmesouza01 | 3C |
 | Adryan | @Adryan16isaque | 3C |
 | Livia | @liviaoliveirasantosflor-cloud | 3C |  
