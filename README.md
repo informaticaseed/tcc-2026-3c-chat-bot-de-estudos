@@ -1,11 +1,12 @@
 **LTP3 + QP3 · CEMIC 2026 · Prof. Rafael Martins Alves**
+
  
 ---
 
 ## 👥 Integrantes   
 
 | Nome completo | GitHub | Turma |
-|--------------|--------|-------|
+|--------------|--------|-------|    
 | Riquelme | @riquelmesouza01 | 3C |
 | Adryan | @Adryan16isaque | 3C |
 | Livia | @liviaoliveirasantosflor-cloud | 3C |  
