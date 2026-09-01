@@ -41,10 +41,10 @@ Etapas:
 
 | Integrante | O que se comprometeu a fazer |
 |-----------|------------------------------|
-| Asafe | referência bibliográfica |
-| Adryan | refatoração do código/designer: iniciar o frontend e deixar funcional |
-| Riquelme | diagrama caso de uso; modelo entidade relacionamento do banco de dados|
-| Enzo | enviar os arquivos do backend e banco de dados nos repositórios github |
+| Asafe | Corrigir/adicionar problemas das referência bibliográfica |
+| Adryan | Refatorar frontend |
+| Riquelme | Adicionar imagens do banco de dados, front e backend|
+| Enzo | Alimentar IA e deixar mais específica |
 | Livia | Metodologia, fundamentação teórica|
 
 ### Verificação em 22/08
